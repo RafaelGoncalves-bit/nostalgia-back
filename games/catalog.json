@@ -1,0 +1,11 @@
+{
+  "games": [
+    {
+      "id": "fallout",
+      "name": "Fallout: Brotherhood of Steel",
+      "platform": "PS2",
+      "description": "ISO hospedada no servidor",
+      "disc": "game.iso"
+    }
+  ]
+}

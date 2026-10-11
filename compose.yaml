@@ -1,0 +1,19 @@
+services:
+  api:
+    build: .
+    restart: unless-stopped
+    environment:
+      PORT: 3000
+      GAMES_DIR: /games
+    volumes:
+      - ./games:/games:ro
+    ports:
+      - "8080:3000"
+  webdav:
+    image: rclone/rclone:1.70
+    restart: unless-stopped
+    command: ["serve", "webdav", "/games", "--addr", ":8081", "--read-only", "--user", "${WEBDAV_USER}", "--pass", "${WEBDAV_PASSWORD}"]
+    volumes:
+      - ./games:/games:ro
+    ports:
+      - "8081:8081"
